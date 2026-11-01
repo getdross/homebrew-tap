@@ -2,7 +2,7 @@
 
 Homebrew tap for [dross](https://github.com/getdross/dross). Not a Homebrew core formula.
 
-The formula installs the arm64 archive from the public `v0.1.0` release. An Intel Mac downloads `dross-cli-x86_64-apple-darwin.tar.xz` from that release instead.
+The formula installs the archive for this Mac from the public `v0.1.0` release: `dross-cli-aarch64-apple-darwin.tar.xz` on Apple Silicon and `dross-cli-x86_64-apple-darwin.tar.xz` on Intel.
 
 ```sh
 brew tap getdross/tap
