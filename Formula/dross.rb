@@ -4,12 +4,20 @@
 # `HOMEBREW_GITHUB_API_TOKEN` must be able to read that repository.
 # Homebrew does not pass the `gh` login into a custom download strategy.
 class PrivateGitHubReleaseDownloadStrategy < CurlDownloadStrategy
+  def initialize(url, name, version, **meta)
+    super
+    # Homebrew keeps this variable visible while the formula is loaded, then
+    # removes token-like variables before the download runs.
+    @github_token = ENV.fetch("HOMEBREW_GITHUB_API_TOKEN", "")
+  end
+
   def fetch(timeout: nil)
-    token = ENV.fetch("HOMEBREW_GITHUB_API_TOKEN", "")
+    token = github_token
     if token.empty?
       raise CurlDownloadStrategyError.new(
         url,
-        "Set HOMEBREW_GITHUB_API_TOKEN to a token that can read the private release.",
+        "Set HOMEBREW_GITHUB_API_TOKEN to a token that can read the private release, " \
+        "or run `gh auth login` for wzohny/dross.",
       )
     end
 
@@ -38,6 +46,13 @@ class PrivateGitHubReleaseDownloadStrategy < CurlDownloadStrategy
   end
 
   private
+
+  def github_token
+    return @github_token unless @github_token.empty?
+
+    require "utils/github"
+    GitHub.credentials.to_s
+  end
 
   def asset_api_url(token)
     match = url.match(%r{\Ahttps://github\.com/([^/]+)/([^/]+)/releases/download/([^/]+)/([^/?#]+)\z})

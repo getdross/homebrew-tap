@@ -2,7 +2,7 @@
 
 Private Homebrew tap for [dross](https://github.com/wzohny/dross).
 
-The formula installs the arm64 archive from the private `v0.1.0` release. Tapping this repository uses your existing `gh` login. The binary download does not, so export a token that can read `wzohny/dross` before installing:
+The formula installs the arm64 archive from the private `v0.1.0` release. Tapping this repository uses your existing `gh` login. Export a token that can read `wzohny/dross` before installing. If Homebrew hides that variable from the download, the formula uses `gh auth token` instead.
 
 ```sh
 export HOMEBREW_GITHUB_API_TOKEN=github_pat_...
