@@ -51,7 +51,9 @@ class PrivateGitHubReleaseDownloadStrategy < CurlDownloadStrategy
     return @github_token unless @github_token.empty?
 
     require "utils/github"
-    GitHub.credentials.to_s
+    # Homebrew 7 strips token variables before `fetch`. `GitHub::API.credentials`
+    # reads the variable if it is still there, then `gh auth token`, then the keychain.
+    GitHub::API.credentials.to_s
   end
 
   def asset_api_url(token)
