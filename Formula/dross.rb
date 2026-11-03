@@ -7,12 +7,12 @@ class Dross < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/getdross/dross/releases/download/v0.1.9/dross-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "dceeced234ba7ca618cfefb22258e90d514dc083475502aae20c89085c71e5f2"
+      url "https://github.com/getdross/dross/releases/download/v0.1.10/dross-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "5267b6fcf67c81531cb6c803d33211c5449d8e2c30bd1427fb356adf9c9db3a8"
     end
     on_intel do
-      url "https://github.com/getdross/dross/releases/download/v0.1.9/dross-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "237e7669793f3aa16ff89473d4efb26a3ed6544ca6ebd63461e3ce3cb0888a4f"
+      url "https://github.com/getdross/dross/releases/download/v0.1.10/dross-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "8165849b29035dbdb456c3588220cd67741942ea47308e4352939e9c19bdfbf1"
     end
   end
 
@@ -21,6 +21,6 @@ class Dross < Formula
   end
 
   test do
-    assert_match "dross 0.1.9", shell_output("#{bin}/dross --version")
+    assert_match "dross 0.1.10", shell_output("#{bin}/dross --version")
   end
 end
