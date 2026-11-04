@@ -3,16 +3,17 @@
 class Dross < Formula
   desc "Developer disk cleaner"
   homepage "https://github.com/getdross/dross"
+  version "0.2.2"
   depends_on :macos
 
   on_macos do
     on_arm do
-      url "https://github.com/getdross/dross/releases/download/v0.2.1/dross-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "d51c8ccada792ff6a91c3b4c4532c2c4ec39bc3aef4105d7da224d143b542c39"
+      url "https://github.com/getdross/dross/releases/download/v0.2.2/dross-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "549c42c14e27671408fd6343029f81b2849b3414c50271142fa9dadce19f029b"
     end
     on_intel do
-      url "https://github.com/getdross/dross/releases/download/v0.2.1/dross-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "b5ba7d735fbdfcb6b46a38aedfbba5818c26662b048aeb8672ba63ad0ab3af6c"
+      url "https://github.com/getdross/dross/releases/download/v0.2.2/dross-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "5361a9b07211dce28e4ff3328885aa2b0e6350711dd136595bb0dd2b84b84900"
     end
   end
 
@@ -21,6 +22,6 @@ class Dross < Formula
   end
 
   test do
-    assert_match "dross 0.2.1", shell_output("#{bin}/dross --version")
+    assert_match "dross 0.2.2", shell_output("#{bin}/dross --version")
   end
 end
