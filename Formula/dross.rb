@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Dross < Formula
-  desc "Developer disk cleaner"
-  homepage "https://github.com/getdross/dross"
+  desc "Yosr Dross: developer disk cleaner for macOS"
+  homepage "https://dross.yosr.ai"
   version "0.3.2"
+  license :cannot_represent
   depends_on :macos
 
   on_macos do
